@@ -3,10 +3,9 @@
 from os import walk
 from os.path import join
 import os,time 
-#pip install pyinstaller
-#pyinstaller -F
-#mtime = time.ctime(os.stat("D:/datetime.txt").st_mtime) #文件的修改时间 
-#ctime = time.ctime(os.stat("D:/datetime.txt").st_ctime) #文件的创建时间
+
+#mtime = time.ctime(os.stat("D:/datetime.txt").st_mtime) #文件的時間 
+#ctime = time.ctime(os.stat("D:/datetime.txt").st_ctime) #文件修改時間
 
 # 指定要列出所有檔案的目錄
 loop = True
@@ -44,6 +43,7 @@ while loop:
     filesBackup = open('FilesBackup.txt', 'r', encoding = 'utf8')
     filesNew = open('FilesNew.txt', 'r', encoding = 'utf8')
     dff = set(filesBackup).symmetric_difference(filesNew)
+    sorted(dff)
     #dff.discard('\n')
     filesCompare = open('FilesCompare.txt', 'w', encoding = 'utf8')
     for line in dff:
