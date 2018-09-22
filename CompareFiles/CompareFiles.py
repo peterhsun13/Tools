@@ -3,7 +3,8 @@
 from os import walk
 from os.path import join
 import os,time 
-
+#pip install pyinstaller
+#pyinstaller -h
 #mtime = time.ctime(os.stat("D:/datetime.txt").st_mtime) #文件的修改时间 
 #ctime = time.ctime(os.stat("D:/datetime.txt").st_ctime) #文件的创建时间
 
