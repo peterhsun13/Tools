@@ -18,6 +18,8 @@ class CompareTool():
         self.compareFileName ='CompareFiles.txt'
         self.inputWording = '請輸入路徑：'
 
+        self.systemLoop = True
+
     def scanPath(self, filePath):
         content = ''
         for root, dirs, files in walk(filePath):  # 遞迴列出所有檔案的絕對路徑
