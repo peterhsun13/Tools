@@ -10,6 +10,14 @@ import os
 import sys
 import os.path
 
+class CompareTool():
+    def __init__(self):
+        self.systemMessage = '1：BackupFiles \n 2：CurrentFiles \n 3:CompareFiles \n 4:CopyFiles 5:Exit \n'
+        self.backUpFileName = 'BackupFiles.txt'
+        self.newFileName = 'CurrentFiles.txt'
+        self.compareFileName ='CompareFiles.txt'
+        self.inputWording = '請輸入路徑：'
+
 loop = True
 while loop:
     choose = ''
