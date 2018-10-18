@@ -32,6 +32,15 @@ class CompareTool():
         file.write(content)
         file.close()
 
+    def checkFileLogIsEmpty(self, fileLogName):
+        file = open(fileLogName, 'r', encoding='utf8')
+        content = file.read()
+        file.close()
+
+        if len(content) == 0:
+            return True
+        return False
+
 
 loop = True
 while loop:
