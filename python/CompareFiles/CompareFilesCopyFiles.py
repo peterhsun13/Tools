@@ -46,6 +46,9 @@ class CompareTool():
 
                 if self.checkFileLogIsEmpty(self.newFileNameKey):
                     print(self.newFileNameKey + '無資料')
+            elif featureSwtich == self.compareFileNameKey:
+                self.compareFile()
+
 
     def scanPath(self, filePath):
         content = ''
