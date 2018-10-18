@@ -16,6 +16,11 @@ class CompareTool():
         self.backUpFileName = 'BackupFiles.txt'
         self.newFileName = 'CurrentFiles.txt'
         self.compareFileName ='CompareFiles.txt'
+
+        self.backUpFileNameKey = '1'
+        self.newFileNameKey = '2'
+        self.compareFileNameKey ='3'
+
         self.inputWording = '請輸入路徑：'
 
         self.systemLoop = True
