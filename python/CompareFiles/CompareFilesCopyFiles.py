@@ -27,6 +27,12 @@ class CompareTool():
                 content = content + str(fullPathBackup.encode('utf-8').decode('utf-8')) + '|' + fileModifyTime + '\n'
         return content
 
+    def saveFileLog(self, fileLogName, content):
+        file = open(fileLogName, 'w+', encoding='utf8')
+        file.write(content)
+        file.close()
+
+
 loop = True
 while loop:
     choose = ''
