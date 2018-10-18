@@ -25,6 +25,28 @@ class CompareTool():
 
         self.systemLoop = True
 
+    def main(self):
+        while self.systemLoop:
+            featureSwtich = input(self.systemMessage)
+
+            if featureSwtich == self.backUpFileNameKey:
+                path = input(self.inputWording)
+                content = self.scanPath(path)
+
+                self.saveFileLog(self.backUpFileName, content)
+
+                if self.checkFileLogIsEmpty(self.backUpFileName):
+                    print(self.backUpFileName + '無資料')
+
+            elif featureSwtich == self.newFileNameKey:
+                path = input(self.inputWording)
+                content = self.scanPath(path)
+
+                self.saveFileLog(self.newFileNameKey, content)
+
+                if self.checkFileLogIsEmpty(self.newFileNameKey):
+                    print(self.newFileNameKey + '無資料')
+
     def scanPath(self, filePath):
         content = ''
         for root, dirs, files in walk(filePath):  # 遞迴列出所有檔案的絕對路徑
