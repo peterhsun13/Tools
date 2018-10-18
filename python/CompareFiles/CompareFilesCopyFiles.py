@@ -70,6 +70,22 @@ class CompareTool():
             return True
         return False
 
+    def compareFile(self):
+        try:
+            backupFile = open(self.backUpFileName, 'r', encoding='utf8')
+            newFile = open(self.newFileName, 'r', encoding='utf8')
+            diff = set(backupFile).symmetric_difference(newFile)
+
+            diffContent = ''
+            for line in diff:
+                diffContent = diffContent + line + 'n'
+
+            self.saveFileLog(self.compareFileName, diffContent)
+
+            if self.checkFileLogIsEmpty(self.compareFileName):
+                print(self.compareFileName + '無資料')
+        except FileNotFoundError:
+            print('無' + self.backUpFileName + '、' + self.newFileName + '檔案')
 
 loop = True
 while loop:
