@@ -18,6 +18,15 @@ class CompareTool():
         self.compareFileName ='CompareFiles.txt'
         self.inputWording = '請輸入路徑：'
 
+    def scanPath(self, filePath):
+        content = ''
+        for root, dirs, files in walk(filePath):  # 遞迴列出所有檔案的絕對路徑
+            for f in files:
+                fullPathBackup = join(root, f)
+                fileModifyTime = str(datetime.fromtimestamp(os.stat(fullPathBackup).st_mtime))
+                content = content + str(fullPathBackup.encode('utf-8').decode('utf-8')) + '|' + fileModifyTime + '\n'
+        return content
+
 loop = True
 while loop:
     choose = ''
