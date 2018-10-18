@@ -9,11 +9,7 @@ import shutil
 import os
 import sys
 import os.path
-# pyinstaller -F .\hello.py
-# mtime = time.ctime(os.stat("D:/datetime.txt").st_mtime) #文件修改時間
-# ctime = time.ctime(os.stat("D:/datetime.txt").st_ctime) #文件原始時間
 
-# 指定要列出所有檔案的目錄
 loop = True
 while loop:
     choose = ''
@@ -21,18 +17,16 @@ while loop:
         '1：BackupFiles 2：CurrentFiles 3:CompareFiles 4:CopyFiles 5:Exit \n')
     if choose == '1':
         myPathBackup = ''
-        myPathBackup = input('請輸入路徑：')  # mypath = "G:\\NEW"
+        myPathBackup = input('請輸入路徑：')
         backupFiles = open('BackupFiles.txt', 'w+', encoding='utf8')
         for root, dirs, files in walk(myPathBackup):  # 遞迴列出所有檔案的絕對路徑
             for f in files:
                 fullPathBackup = join(root, f)
                 mtime = str(datetime.fromtimestamp(
-                    os.stat(fullPathBackup).st_mtime))  # 文件的修改时间
-                # print(fullpath,mtime)
+                    os.stat(fullPathBackup).st_mtime))
+
                 backupFiles.write(str(fullPathBackup.encode(
                     'utf-8').decode('utf-8')) + '|' + mtime + '\n')
-                #fullpathstr = str(fullpath.encode())
-                #print(f'{str(fullpath.encode())}', file = files)
 
         backupFiles = open('BackupFiles.txt', 'r', encoding='utf8')
         backupString = backupFiles.read()
@@ -48,11 +42,8 @@ while loop:
                 fullPathCurrent = join(root, f)
                 mtime = str(datetime.fromtimestamp(
                     os.stat(fullPathCurrent).st_mtime))  # 文件的修改时间
-                # print(fullpath,mtime)
                 currentFiles.write(str(fullPathCurrent.encode(
                     'utf-8').decode('utf-8')) + '|' + mtime + '\n')
-                #fullpathstr = str(fullpath.encode())
-                #print(f'{str(fullpath.encode())}', file = files)
 
         currentFiles = open('CurrentFiles.txt', 'r', encoding='utf8')
         currentString = currentFiles.read()
@@ -64,7 +55,6 @@ while loop:
             backupFiles = open('BackupFiles.txt', 'r', encoding='utf8')
             currentFiles = open('CurrentFiles.txt', 'r', encoding='utf8')
             dff = set(backupFiles).symmetric_difference(currentFiles)
-            # dff.discard('\n')
             compareFiles = open('CompareFiles.txt', 'w', encoding='utf8')
             for line in dff:
                 compareFiles.write(line + '\n')
@@ -97,9 +87,8 @@ while loop:
                     makeDirPath = dirPath.strip(filesPath.split('\\')[0])
                 # 如果有相同路徑不建立
                     if not os.path.isdir(makeDirectory+makeDirPath[:-1]):
-                        os.makedirs(makeDirectory+makeDirPath[:-1], 493)                       
+                        os.makedirs(makeDirectory+makeDirPath[:-1], 493)
                     try:
-                        # if os.path.isfile(filesPath):
                         shutil.copy(filesPath, makeDirectory+makeDirPath[:-1])
                     except FileNotFoundError:
                         print(filesPath + '此為刪除的檔案')
@@ -109,7 +98,7 @@ while loop:
         except FileNotFoundError:
             print('無CopareFiles.txt')
         except NameError:
-            print('無CopareFiles.txt') 
+            print('無CopareFiles.txt')
     elif choose == '5':
         print('Bye~')
         loop = False
